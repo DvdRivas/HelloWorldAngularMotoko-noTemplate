@@ -18,15 +18,15 @@ import { createActor } from '../declarations/HelloWorld-Angular-Motoko-backend';
 export class AppComponent {
   title = 'Frontend';
 
-  public name: string = ""
+  public newGreet: string = ""
 
   private motokoActor = createActor(environment.MOTOKO_CANISTER_BACKEND_ID, {
     agentOptions: { host: "http://localhost:4943" }
   });
 
   async greet(newName: string) {
-    await this.motokoActor.greet(newName)
-    this.name = newName
+    this.newGreet = await this.motokoActor.greet(newName)
+    
   }
 }
 
